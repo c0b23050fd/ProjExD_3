@@ -170,7 +170,7 @@ def main():
                 return
         
         
-        if bombs == []:
+        if bombs == []:#bombsのリストが空の時
                 # ゲーム終了処理
             bird.change_img(6, screen)
             pg.display.update()
