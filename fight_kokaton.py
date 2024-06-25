@@ -146,6 +146,10 @@ class Score:
     爆弾の破壊数に応じてスコアを出す
     """
     def __init__(self):
+        """
+        スコアボードを表示する初期設定
+        self.numでスコアを管理
+        """
         self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
         self.num = 0
         self.img = self.fonto.render(f"スコア:{self.num}", 0, (0,0,255))
@@ -194,10 +198,11 @@ def main():
             time.sleep(1)
             return
         
-        for i, bomb in enumerate(bombs):
-            for j, beam in enumerate(beams):
-                if (beams[j] != None) and (bombs[i] != None):
-                    if bombs[i].rct.colliderect(beams[j].rct):
+        for i, bomb in enumerate(bombs): #全ての爆弾
+            for j, beam in enumerate(beams): #全てのビーム
+                if (beams[j] != None) and (bombs[i] != None): 
+                    #ビーム、爆弾ともにNoneじゃないときの条件分岐。これがないと死ぬ
+                    if bombs[i].rct.colliderect(beams[j].rct): #衝突処理
                         bombs[i] = None
                         beams[j] = None
                         score.num += 1
