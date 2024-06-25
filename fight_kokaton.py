@@ -171,7 +171,7 @@ def main():
         
         
         if bombs == []:
-                # ゲームオーバー時に，こうかとん画像を切り替え，1秒間表示させる
+                # ゲーム終了処理
             bird.change_img(6, screen)
             pg.display.update()
             time.sleep(1)
